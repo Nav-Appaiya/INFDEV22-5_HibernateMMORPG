@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import utils.HibernateUtil;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Created by Nav on 04-10-15 17:27.
@@ -35,6 +36,7 @@ public class App {
 
 
 		LoginPanel loginPanel = new LoginPanel();
+
 		loginPanel.setTitle("Game Assignment 1 - INFDEV22-5");
 		loginPanel.setSize(600, 400);
 		loginPanel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

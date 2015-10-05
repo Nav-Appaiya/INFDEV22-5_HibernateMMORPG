@@ -56,7 +56,7 @@ public class LoginPanel extends JFrame implements ActionListener {
 
 		loginPanel.setPreferredSize(new Dimension(250, 200));
 		loginHolder.add(loginPanel, BorderLayout.SOUTH);
-
+        loginPanel.setBorder(BorderFactory.createLineBorder(Color.RED, 5));
 		this.add(loginHolder);
 		loginPanel.add(text1);
 		loginPanel.add(userinput);
@@ -71,7 +71,6 @@ public class LoginPanel extends JFrame implements ActionListener {
 		incorrect.setText("Username of wachtwoord niet correct");
         incorrect.setForeground(Color.red);
         incorrect.setFont(new Font("Courier New", Font.ITALIC, 12));
-
         loginPanel.add(incorrect);
 	}
 
@@ -120,7 +119,12 @@ public class LoginPanel extends JFrame implements ActionListener {
 			result = (result instanceof Player) ? ((Player) result) : null;
             System.out.println("DOING LOGIN STUFF");
             if(result instanceof Player){
-                System.out.println("FOUND!");
+                System.out.println("FOUND USER");
+                loginPanel.setVisible(false);
+                JLabel labelLoggedIn = new JLabel("Hello " + result.getUsername());
+                loginPanel.add(labelLoggedIn);
+                loginPanel.setVisible(true);
+
             } else{
                 System.out.println("NOT FOUND!");
 			}
