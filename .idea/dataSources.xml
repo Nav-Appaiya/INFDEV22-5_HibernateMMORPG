@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="2343603765">
+    <data-source source="LOCAL" name="PostgreSQL - @mmorpg" uuid="185376be-cf7e-4159-8cc6-3817cac290fb">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/mmorpg</jdbc-url>
+      <libraries />
+    </data-source>
+  </component>
+</project>
