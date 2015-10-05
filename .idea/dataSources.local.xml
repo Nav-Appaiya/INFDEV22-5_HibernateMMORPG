@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="PostgreSQL - @mmorpg" uuid="185376be-cf7e-4159-8cc6-3817cac290fb">
+      <secret-storage>master_key</secret-storage>
+      <user-name>postgres</user-name>
+      <schema-pattern>mmorpg.pg_catalog mmorpg.public</schema-pattern>
+      <default-schemas>mmorpg.pg_catalog mmorpg.public</default-schemas>
+    </data-source>
+  </component>
+</project>
