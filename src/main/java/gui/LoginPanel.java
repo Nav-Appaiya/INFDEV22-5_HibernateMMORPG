@@ -3,7 +3,6 @@ package gui;
 import entities.Player;
 import org.hibernate.Session;
 import utils.HibernateUtil;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -16,21 +15,20 @@ public class LoginPanel extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = -4251702363640218639L;
 	private static String username;
-
-	public static JPanel loginPanel;
 	public static String password;
-	public static JPanel loginHolder;
+	public static JPanel loginPanel;
 	public static JLabel incorrect;
+	public static JPanel loginHolder;
 
 	public JButton loginButton;
 	public JButton registerButton;
-	public JLabel text1;
-	public JLabel text2;
-	public JTextField passwinput;
-	public JTextField userinput;
+	public JLabel labelUsername;
+	public JLabel labelPassword;
+	public JTextField inputPassword;
+	public JTextField inputUsername;
 
 	public LoginPanel() {
-		this.createLoginPanel();
+		createLoginPanel();
 	}
 
 	private void createLoginPanel() {
@@ -38,10 +36,10 @@ public class LoginPanel extends JFrame implements ActionListener {
 		loginPanel = new JPanel();
 		loginButton = new JButton("Login");
 		registerButton = new JButton("Registreer");
-		userinput = new JTextField("", 15);
-		text1 = new JLabel("Gebruiker:");
-		passwinput = new JTextField("", 15);
-		text2 = new JLabel("Wachtwoord:");
+		inputUsername = new JTextField("", 15);
+		labelUsername = new JLabel("Gebruiker:");
+		inputPassword = new JTextField("", 15);
+		labelPassword = new JLabel("Wachtwoord:");
 		incorrect = new JLabel();
 		registerButton.addActionListener(this);
 		loginButton.addActionListener(this);
@@ -51,17 +49,16 @@ public class LoginPanel extends JFrame implements ActionListener {
 		FlowLayout experimentLayout = new FlowLayout();
 		Font bigFont = loginHolder.getFont().deriveFont(Font.PLAIN, 15f);
 
-		userinput.setFont(bigFont);
-		passwinput.setFont(bigFont);
+		inputUsername.setFont(bigFont);
+		inputPassword.setFont(bigFont);
 
 		loginPanel.setPreferredSize(new Dimension(250, 200));
 		loginHolder.add(loginPanel, BorderLayout.SOUTH);
-        loginPanel.setBorder(BorderFactory.createLineBorder(Color.RED, 5));
 		this.add(loginHolder);
-		loginPanel.add(text1);
-		loginPanel.add(userinput);
-		loginPanel.add(text2);
-		loginPanel.add(passwinput);
+		loginPanel.add(labelUsername);
+		loginPanel.add(inputUsername);
+		loginPanel.add(labelPassword);
+		loginPanel.add(inputPassword);
 		loginPanel.add(loginButton);
 		loginPanel.add(registerButton);
 		loginPanel.add(incorrect);
@@ -88,20 +85,19 @@ public class LoginPanel extends JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent event) {
 		if (event.getSource() == loginButton) {
-			username = userinput.getText();
-			password = passwinput.getText();
+			username = inputUsername.getText();
+			password = inputPassword.getText();
             this.login();
 		}
 
 		if (event.getSource() == registerButton) {
-			username = userinput.getText();
-			password = passwinput.getText();
-            this.registerUser();
+			loginHolder.hide();
+			add(new RegisterPanel());
 		}
 	}
 
 	public static void login() {
-		System.out.println("LOGGING");
+		System.out.println("LOGIN ATTEMPT");
 
 		Session sessionA = (Session) HibernateUtil.getSessionFactory()
 				.getCurrentSession();
@@ -136,6 +132,7 @@ public class LoginPanel extends JFrame implements ActionListener {
 	}
 
 	public static void registerUser() {
+		loginPanel.add(new RegisterPanel());
 		Session sessionB = HibernateUtil.getSessionFactory()
 				.getCurrentSession();
 		sessionB.beginTransaction();
