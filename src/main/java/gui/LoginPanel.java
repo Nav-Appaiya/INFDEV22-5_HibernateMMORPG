@@ -43,15 +43,11 @@ public class LoginPanel extends JFrame implements ActionListener {
 		incorrect = new JLabel();
 		registerButton.addActionListener(this);
 		loginButton.addActionListener(this);
-
 		this.setLocation(400,300);
-
 		FlowLayout experimentLayout = new FlowLayout();
 		Font bigFont = loginHolder.getFont().deriveFont(Font.PLAIN, 15f);
-
 		inputUsername.setFont(bigFont);
 		inputPassword.setFont(bigFont);
-
 		loginPanel.setPreferredSize(new Dimension(250, 200));
 		loginHolder.add(loginPanel, BorderLayout.SOUTH);
 		this.add(loginHolder);
@@ -91,14 +87,12 @@ public class LoginPanel extends JFrame implements ActionListener {
 		}
 
 		if (event.getSource() == registerButton) {
-			loginHolder.hide();
-			add(new RegisterPanel());
+            new RegisterPanel();
 		}
 	}
 
-	public static void login() {
+	public void login() {
 		System.out.println("LOGIN ATTEMPT");
-
 		Session sessionA = (Session) HibernateUtil.getSessionFactory()
 				.getCurrentSession();
 		try {
@@ -107,24 +101,19 @@ public class LoginPanel extends JFrame implements ActionListener {
 					.getSessionFactory()
 					.getCurrentSession()
 					.createQuery(
-							"from Player where username = ? and password = ?")
-					.setString(0, LoginPanel.getUsernameInput())
-					.setString(1, LoginPanel.getPasswInput()).list().get(0);
+							"from Player where username = :username and password = :password")
+					.setParameter("username", LoginPanel.getUsernameInput())
+					.setParameter("password", LoginPanel.getPasswInput())
+                    .list().get(0);
 			sessionA.getTransaction().commit();
 
 			result = (result instanceof Player) ? ((Player) result) : null;
-            System.out.println("DOING LOGIN STUFF");
+
             if(result instanceof Player){
                 System.out.println("FOUND USER");
-                loginPanel.setVisible(false);
-                JLabel labelLoggedIn = new JLabel("Hello " + result.getUsername());
-                loginPanel.add(labelLoggedIn);
-                loginPanel.setVisible(true);
-
-            } else{
-                System.out.println("NOT FOUND!");
-			}
-
+                super.dispose();
+                new UserFrame(result);
+            }
 		} catch (IndexOutOfBoundsException e) {
 			LoginPanel.addIncorrectMessage();
 			sessionA.getTransaction().commit();
@@ -133,14 +122,6 @@ public class LoginPanel extends JFrame implements ActionListener {
 
 	public static void registerUser() {
 		loginPanel.add(new RegisterPanel());
-		Session sessionB = HibernateUtil.getSessionFactory()
-				.getCurrentSession();
-		sessionB.beginTransaction();
-		Player player = new Player();
-		player.setUsername(LoginPanel.getUsernameInput());
-		player.setPassword(LoginPanel.getPasswInput());
-		sessionB.save(player);
-		sessionB.getTransaction().commit();
 	}
 
 }

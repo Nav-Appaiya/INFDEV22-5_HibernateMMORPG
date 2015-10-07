@@ -6,7 +6,6 @@ import org.hibernate.Session;
 import utils.HibernateUtil;
 
 import javax.swing.*;
-import java.awt.*;
 
 /**
  * Created by Nav on 04-10-15 17:27.
@@ -18,22 +17,6 @@ public class App {
 		stores.setAddress(new Server());
 		stores.setPlayer(new Player());
 		Session current = HibernateUtil.getSessionFactory().getCurrentSession();
-
-        // Example Transaction
-//        try{
-//            current.beginTransaction();
-//            List result = (List)HibernateUtil
-//                            .getSessionFactory()
-//                            .getCurrentSession()
-//                            .createSQLQuery("SELECT * FROM player")
-//                            .getQueryReturns();
-//
-//        } catch (IndexOutOfBoundsException e) {
-//            LoginPanel.addIncorrectMessage();
-//            current.getTransaction().commit();
-//        }
-
-
 
 		LoginPanel loginPanel = new LoginPanel();
 
