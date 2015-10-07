@@ -22,7 +22,7 @@ public class Player {
     private String monthspayed; 
     // @Column(unique = true)
     private String password; 
-    private String banned; 
+    private Boolean banned;
     
     @OneToMany(mappedBy="player", cascade = CascadeType.ALL) 
     private Set<Character> characters = new HashSet<Character>();
@@ -35,7 +35,7 @@ public class Player {
 
     public Player(String username, String balance, String firstname, String lastname, 
     String iban, String characterslots, String lastpayment, String monthspayed, 
-    String password, String banned) {
+    String password, Boolean banned) {
         this();
         this.username = username;
         this.balance = balance;
@@ -142,11 +142,11 @@ public class Player {
 		this.password = password;
 	}
 
-	public String getBanned() {
+	public Boolean getBanned() {
 		return banned;
 	}
 
-	public void setBanned(String banned) {
+	public void setBanned(Boolean banned) {
 		this.banned = banned;
 	}
 
