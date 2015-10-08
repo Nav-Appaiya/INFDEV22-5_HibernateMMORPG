@@ -21,14 +21,14 @@ public class Player {
     private String firstname;
     private String lastname; 
     private String iban; 
-    private String characterslots; 
+    private String characterslots;
     private String lastpayment; 
     private String monthspayed; 
     // @Column(unique = true)
     private String password; 
     private Boolean banned;
     
-    @OneToMany(mappedBy="player", cascade = CascadeType.ALL) 
+    @OneToMany(mappedBy="player", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Character> characters = new HashSet<Character>();
     
     @OneToMany(mappedBy="player", cascade = CascadeType.ALL) 
@@ -38,7 +38,7 @@ public class Player {
     public Player() {}
 
     public Player(String username, String balance, String firstname, String lastname, 
-    String iban, String characterslots, String lastpayment, String monthspayed, 
+    String iban, String characterslots, String lastpayment, String monthspayed,
     String password, Boolean banned) {
         this();
         this.username = username;
@@ -62,18 +62,14 @@ public class Player {
         this.id = id;
     }
 
-    
-    public Set<Character> getCharacters()  
-    {  
-        return characters;  
-    }  
-    public void setCharacters(Set<Character> characters)  
-    {  
-        this.characters = characters;  
-    }  
-    
+    public Set<Character> getCharacters() {
+        return characters;
+    }
 
-    
+    public void setCharacters(Set<Character> characters) {
+        this.characters = characters;
+    }
+
     public String getUsername() {
 		return username;
 	}

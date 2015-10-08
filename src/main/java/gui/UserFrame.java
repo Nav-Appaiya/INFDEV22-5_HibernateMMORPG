@@ -12,11 +12,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class UserFrame extends JFrame
+public class UserFrame extends JFrame implements ActionListener
 {
     JPanel p1;
     Dimension d;
     public Player player;
+    public JButton characterButton;
 
     public UserFrame()
     {
@@ -44,9 +45,13 @@ public class UserFrame extends JFrame
         p1.add(new JLabel("Welkom " + this.player.getFirstname() + " " + this.player.getLastname()));
         p1.add(new JLabel("Je balans is $" + this.player.getBalance()));
         p1.add(new JLabel("Je hebt nog " + this.player.getCharacterslots() + "x slots"));
+        characterButton = new JButton("Characters management");
+        characterButton.addActionListener(this);
+        p1.add(characterButton);
         p1.add(addFiveButton);
         p1.add(addTenButton);
         p1.add(addFiftyButton);
+
 
         add(p1);
         setSize(200, 400);
@@ -105,6 +110,13 @@ public class UserFrame extends JFrame
                 createAndShowGUI();
             }
         });
+    }
+
+    public void actionPerformed(ActionEvent event) {
+
+        if (event.getSource() == characterButton) {
+            new CharactersPanel(this.player);
+        }
     }
 
     public static void runner()
