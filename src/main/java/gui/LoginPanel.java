@@ -111,6 +111,7 @@ public class LoginPanel extends JFrame implements ActionListener {
 
             if(result instanceof Player){
                 System.out.println("FOUND USER");
+
                 super.dispose();
                 new UserFrame(result);
             }

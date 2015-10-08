@@ -44,6 +44,30 @@ public class Character {
         this.name = name;
     }
 
+    public String getCharclass() {
+        return charclass;
+    }
+
+    public void setCharclass(String charclass) {
+        this.charclass = charclass;
+    }
+
+    public String getRace() {
+        return race;
+    }
+
+    public void setRace(String race) {
+        this.race = race;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
     public Long getId() {
         return id;
     }
