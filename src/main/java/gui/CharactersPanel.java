@@ -1,10 +1,8 @@
 package gui;
 
-import entities.*;
 import entities.Character;
-import org.hibernate.Hibernate;
+import entities.Player;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import utils.HibernateUtil;
 
 import javax.swing.*;
@@ -21,7 +19,8 @@ public class CharactersPanel extends JFrame implements ActionListener {
 
     private static JButton newCharacterButton;
     private static JButton viewCharacterButton;
-
+    protected JComboBox characterList;
+    public JFrame frame;
     public Player player;
 
     public CharactersPanel(Player p) {
@@ -31,18 +30,17 @@ public class CharactersPanel extends JFrame implements ActionListener {
 
 
     public void initialize() {
-
-        JFrame frame = new JFrame();
+        frame = new JFrame();
         frame.setBounds(100, 100, 565, 456);
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.getContentPane().setLayout(null);
-
+            frame.setVisible(true);
 
         Set<entities.Character> characters = this.player.getCharacters();
         int countCharacters = characters.size();
 
         if (countCharacters > 0) {
-            JComboBox characterList = new JComboBox<String>();
+            characterList = new JComboBox<String>();
             for (entities.Character character : characters) {
                 characterList.addItem(character.getName());
             }
@@ -149,7 +147,7 @@ public class CharactersPanel extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == newCharacterButton) {
-            JFrame frame = new JFrame();
+            final JFrame frame = new JFrame();
             frame.setBounds(100, 100, 565, 456);
             frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
             frame.getContentPane().setLayout(null);

@@ -18,6 +18,7 @@ public class UserFrame extends JFrame implements ActionListener
     Dimension d;
     public Player player;
     public JButton characterButton;
+    public JButton buySlotsButton;
 
     public UserFrame()
     {
@@ -46,19 +47,18 @@ public class UserFrame extends JFrame implements ActionListener
         p1.add(new JLabel("Je balans is $" + this.player.getBalance()));
         p1.add(new JLabel("Je hebt nog " + this.player.getCharacterslots() + "x slots"));
         characterButton = new JButton("Characters management");
+        buySlotsButton = new JButton("Extra slots kopen");
         characterButton.addActionListener(this);
+        buySlotsButton.addActionListener(this);
         p1.add(characterButton);
+        p1.add(buySlotsButton);
         p1.add(addFiveButton);
         p1.add(addTenButton);
         p1.add(addFiftyButton);
-
-
         add(p1);
         setSize(200, 400);
         setVisible(true);
         pack();
-
-
         addFiveButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int s = Integer.parseInt(player.getBalance());
@@ -116,6 +116,35 @@ public class UserFrame extends JFrame implements ActionListener
 
         if (event.getSource() == characterButton) {
             new CharactersPanel(this.player);
+        }
+        if(event.getSource() == buySlotsButton ){
+            boolean canbuy = true;
+            int playerBalance = Integer.parseInt(player.getBalance());
+            int maxSlotsForPlayer = (int) playerBalance / 250;
+
+            int slotInput = Integer.parseInt( JOptionPane.showInputDialog(null, "1 Slot kost $250. Je kan maximaal nog " +
+                    maxSlotsForPlayer +
+                    " slots kopen. Hoeveel slots wil je kopen?"));
+
+            if(slotInput >= maxSlotsForPlayer){
+                JOptionPane.showMessageDialog(null, "Zoveel slots kun je niet kopen. ");
+                canbuy = false;
+            }
+            if(canbuy == true){
+                playerBalance = playerBalance - (slotInput*250);
+                String finalBalance = playerBalance + "";
+                Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+                s.beginTransaction();
+                player.setBalance(finalBalance);
+                int f = Integer.parseInt(player.getCharacterslots());
+                f = f+slotInput;
+                player.setCharacterslots(f+"");
+                s.saveOrUpdate(player);
+                s.getTransaction().commit();
+                p1.setVisible(false);
+                createAndShowGUI();
+                System.out.println("User new slot level = " + player.getCharacterslots());
+            }
         }
     }
 
