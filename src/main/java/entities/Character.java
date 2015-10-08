@@ -67,7 +67,5 @@ public class Character {
 				+ charclass + ", race=" + race + ", level=" + level
 				+ ", player=" + player + "]";
 	}
-  
- 
 
 }
