@@ -1,11 +1,10 @@
-import entities.Player;
-import entities.Server;
-import entities.Stores;
+import entities.*;
 import gui.LoginPanel;
 import org.hibernate.Session;
 import utils.HibernateUtil;
 
 import javax.swing.*;
+import java.lang.Character;
 
 /**
  * Created by Nav on 04-10-15 17:27.
@@ -24,5 +23,9 @@ public class App {
 		loginPanel.setSize(600, 400);
 		loginPanel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		loginPanel.setVisible(true);
+
+        // only for data generating
+        //Player user = new Player();
+        //user.generateData(3000);
 	}
 }
