@@ -1,5 +1,9 @@
 package entities;
 
+import org.hibernate.Session;
+import utils.HibernateUtil;
+import utils.Helpers;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -160,6 +164,59 @@ public class Player {
 				+ ", banned=" + banned + ", characters=" + characters
 				+ ", servers=" + servers + "]";
 	}
+
+    public void generateData(int countRows)
+    {
+        Session session = (Session) HibernateUtil.getSessionFactory().getCurrentSession();
+
+        int i = 0; // counter
+        Helpers helpers = new Helpers();
+
+        session.beginTransaction();
+        for (i = 0; i < countRows; i++) {
+
+            Player user = new Player();
+            user.setBalance("0");
+            user.setBanned(false);
+            user.setCharacterslots("5");
+            user.setFirstname(helpers.generateRandom(30, false));
+            user.setLastname(helpers.generateRandom(20, false));
+            user.setIban(helpers.generateRandom(35, true));
+            user.setUsername(helpers.generateRandom(15, true));
+            user.setPassword(helpers.generateRandom(24, true));
+
+            Set<Character> userCharacters = new HashSet<Character>();
+
+            // two characters per user
+            Character character1 = new Character(
+                    helpers.generateRandom(15, false),
+                    helpers.generateRandom(20, false),
+                    helpers.generateRandom(20, false),
+                    0
+            );
+            character1.setPlayer(user);
+            userCharacters.add(character1);
+
+            Character character2 = new Character(
+                    helpers.generateRandom(15, false),
+                    helpers.generateRandom(20, false),
+                    helpers.generateRandom(20, false),
+                    0
+            );
+            character2.setPlayer(user);
+            userCharacters.add(character2);
+
+            user.setCharacters(userCharacters);
+
+            // save
+            session.save(character1);
+            session.save(character2);
+            session.save(user);
+        }
+
+        session.getTransaction().commit();
+        System.out.println("Inserted "+countRows+" random rows to players database.");
+    }
 
       
 }

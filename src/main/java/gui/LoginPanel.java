@@ -67,10 +67,6 @@ public class LoginPanel extends JFrame implements ActionListener {
         loginPanel.add(incorrect);
 	}
 
-	public static void addUsedMessage() {
-		incorrect.setText("Username of wachtwoord is al in gebruik");
-	}
-
 	public static String getPasswInput() {
 		return password;
 	}
@@ -91,8 +87,14 @@ public class LoginPanel extends JFrame implements ActionListener {
 		}
 	}
 
-	public void login() {
+	public boolean login() {
 		System.out.println("LOGIN ATTEMPT");
+
+        if (LoginPanel.getUsernameInput().isEmpty() || LoginPanel.getPasswInput().isEmpty()) {
+            LoginPanel.addIncorrectMessage();
+            return false;
+        }
+
 		Session sessionA = (Session) HibernateUtil.getSessionFactory()
 				.getCurrentSession();
 		try {
@@ -107,8 +109,6 @@ public class LoginPanel extends JFrame implements ActionListener {
                     .list().get(0);
 			sessionA.getTransaction().commit();
 
-			result = (result instanceof Player) ? ((Player) result) : null;
-
             if(result instanceof Player){
                 System.out.println("FOUND USER");
                 super.dispose();
@@ -118,6 +118,8 @@ public class LoginPanel extends JFrame implements ActionListener {
 			LoginPanel.addIncorrectMessage();
 			sessionA.getTransaction().commit();
 		}
+
+        return true;
 	}
 
 	public static void registerUser() {
