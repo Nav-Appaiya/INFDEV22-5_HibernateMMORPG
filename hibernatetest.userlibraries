@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse-userlibraries>
+  <library name="Maven: org.jboss:jandex:1.1.0.Final">
+    <archive path="/Users/Nav/.m2/repository/org/jboss/jandex/1.1.0.Final/jandex-1.1.0.Final.jar" />
+  </library>
+  <library name="Maven: org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final">
+    <archive path="/Users/Nav/.m2/repository/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final.jar" />
+  </library>
+  <library name="Maven: org.jboss.logging:jboss-logging:3.1.3.GA">
+    <archive path="/Users/Nav/.m2/repository/org/jboss/logging/jboss-logging/3.1.3.GA/jboss-logging-3.1.3.GA.jar" />
+  </library>
+  <library name="Maven: org.hibernate.common:hibernate-commons-annotations:4.0.4.Final">
+    <archive path="/Users/Nav/.m2/repository/org/hibernate/common/hibernate-commons-annotations/4.0.4.Final/hibernate-commons-annotations-4.0.4.Final.jar" />
+  </library>
+  <library name="Maven: org.postgresql:postgresql:9.3-1101-jdbc41">
+    <archive path="/Users/Nav/.m2/repository/org/postgresql/postgresql/9.3-1101-jdbc41/postgresql-9.3-1101-jdbc41.jar" />
+  </library>
+  <library name="Maven: dom4j:dom4j:1.6.1">
+    <archive path="/Users/Nav/.m2/repository/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar" />
+  </library>
+  <library name="Maven: org.javassist:javassist:3.18.1-GA">
+    <archive path="/Users/Nav/.m2/repository/org/javassist/javassist/3.18.1-GA/javassist-3.18.1-GA.jar" />
+  </library>
+  <library name="Maven: org.hibernate:hibernate-core:4.3.5.Final">
+    <archive path="/Users/Nav/.m2/repository/org/hibernate/hibernate-core/4.3.5.Final/hibernate-core-4.3.5.Final.jar" />
+  </library>
+  <library name="Maven: antlr:antlr:2.7.7">
+    <archive path="/Users/Nav/.m2/repository/antlr/antlr/2.7.7/antlr-2.7.7.jar" />
+  </library>
+  <library name="Maven: xml-apis:xml-apis:1.0.b2">
+    <archive path="/Users/Nav/.m2/repository/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.jar" />
+  </library>
+  <library name="Maven: org.jboss.logging:jboss-logging-annotations:1.2.0.Beta1">
+    <archive path="/Users/Nav/.m2/repository/org/jboss/logging/jboss-logging-annotations/1.2.0.Beta1/jboss-logging-annotations-1.2.0.Beta1.jar" />
+  </library>
+  <library name="Maven: org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec:1.0.0.Final">
+    <archive path="/Users/Nav/.m2/repository/org/jboss/spec/javax/transaction/jboss-transaction-api_1.2_spec/1.0.0.Final/jboss-transaction-api_1.2_spec-1.0.0.Final.jar" />
+  </library>
+  <library name="com.github.adrianboimvaser:postgresql-maven-plugin:0.1">
+    <archive path="/Users/Nav/Downloads/Citygis/lib/postgresql-maven-plugin-0.1.jar" />
+    <archive path="/Users/Nav/Downloads/Citygis/lib/maven-plugin-api-3.0.5.jar" />
+    <archive path="/Users/Nav/Downloads/Citygis/lib/maven-model-3.0.5.jar" />
+    <archive path="/Users/Nav/Downloads/Citygis/lib/plexus-utils-3.0.10.jar" />
+    <archive path="/Users/Nav/Downloads/Citygis/lib/maven-artifact-3.0.5.jar" />
+    <archive path="/Users/Nav/Downloads/Citygis/lib/sisu-inject-plexus-2.3.0.jar" />
+    <archive path="/Users/Nav/Downloads/Citygis/lib/plexus-component-annotations-1.5.5.jar" />
+    <archive path="/Users/Nav/Downloads/Citygis/lib/plexus-classworlds-2.4.jar" />
+    <archive path="/Users/Nav/Downloads/Citygis/lib/sisu-inject-bean-2.3.0.jar" />
+    <archive path="/Users/Nav/Downloads/Citygis/lib/sisu-guice-3.1.0-no_aop.jar" />
+    <archive path="/Users/Nav/Downloads/Citygis/lib/sisu-guava-0.9.9.jar" />
+    <archive path="/Users/Nav/Downloads/Citygis/lib/maven-plugin-annotations-3.2.jar" />
+  </library>
+  <library name="Hibernate 4.2.2-4.2.2">
+    <archive path="/Users/Nav/Downloads/Citygis/lib/jboss-logging-3.1.0.GA.jar" />
+    <archive path="/Users/Nav/Downloads/Citygis/lib/hibernate-commons-annotations-4.0.2.Final.jar" />
+    <archive path="/Users/Nav/Downloads/Citygis/lib/hibernate-jpa-2.0-api-1.0.1.Final.jar" />
+    <archive path="/Users/Nav/Downloads/Citygis/lib/jboss-transaction-api_1.1_spec-1.0.1.Final.jar" />
+    <archive path="/Users/Nav/Downloads/Citygis/lib/javassist-3.15.0-GA.jar" />
+    <archive path="/Users/Nav/Downloads/Citygis/lib/dom4j-1.6.1.jar" />
+    <archive path="/Users/Nav/Downloads/Citygis/lib/antlr-2.7.7.jar" />
+    <archive path="/Users/Nav/Downloads/Citygis/lib/hibernate-core-4.2.2.Final.jar" />
+  </library>
+  <library name="Java EE 6-Java EE 6">
+    <archive path="/Users/Nav/IdeaProjects/FirstHibernateProjectFromIdea/lib/javax.transaction.jar" />
+    <archive path="/Users/Nav/IdeaProjects/FirstHibernateProjectFromIdea/lib/javax.persistence.jar" />
+    <archive path="/Users/Nav/IdeaProjects/FirstHibernateProjectFromIdea/lib/javax.servlet.jsp.jar" />
+    <archive path="/Users/Nav/IdeaProjects/FirstHibernateProjectFromIdea/lib/javax.jms.jar" />
+    <archive path="/Users/Nav/IdeaProjects/FirstHibernateProjectFromIdea/lib/javax.servlet.jar" />
+    <archive path="/Users/Nav/IdeaProjects/FirstHibernateProjectFromIdea/lib/javax.resource.jar" />
+    <archive path="/Users/Nav/IdeaProjects/FirstHibernateProjectFromIdea/lib/javax.annotation.jar" />
+    <archive path="/Users/Nav/IdeaProjects/FirstHibernateProjectFromIdea/lib/javax.ejb.jar" />
+    <archive path="/Users/Nav/IdeaProjects/FirstHibernateProjectFromIdea/lib/javax.servlet.jsp.jstl.jar" />
+  </library>
+  <library name="postgresql-9.4-1203.jdbc4">
+    <archive path="/Users/Nav/Downloads/postgresql-9.4-1203.jdbc4.jar" />
+  </library>
+</eclipse-userlibraries>
+
