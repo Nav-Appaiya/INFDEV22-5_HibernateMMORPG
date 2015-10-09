@@ -37,9 +37,9 @@ public class UserFrame extends JFrame implements ActionListener
         setLayout(new FlowLayout());
         p1=new JPanel();
         d=new Dimension(200,500);
-        JButton addFiveButton = new JButton("Add 5");
-        JButton addTenButton = new JButton("Add 10");
-        JButton addFiftyButton = new JButton("Add 50");
+        JButton addFiveButton = new JButton("Koop $5 ");
+        JButton addTenButton = new JButton("Koop $10");
+        JButton addFiftyButton = new JButton("Koop $50");
         p1.setPreferredSize(d);
         p1.setBackground(Color.LIGHT_GRAY);
         p1.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 2, true));
@@ -119,22 +119,26 @@ public class UserFrame extends JFrame implements ActionListener
         }
         if(event.getSource() == buySlotsButton ){
             boolean canbuy = true;
+            String slotInputDialog = null;
             int playerBalance = Integer.parseInt(player.getBalance());
             int maxSlotsForPlayer = (int) playerBalance / 250;
 
-            String slotInputDialog = JOptionPane.showInputDialog(null, "1 Slot kost $250. Je kan maximaal nog " +
-                    maxSlotsForPlayer +
-                    " slots kopen. Hoeveel slots wil je kopen?");
+            if(maxSlotsForPlayer == 0 ){
+                JOptionPane.showMessageDialog(null, "Niet genoeg geld, je kunt geen extra slots kopen helaas. Spaar meer of koop extra credits!", "Error", JOptionPane.ERROR_MESSAGE);
+                canbuy = false;
+            }
 
+            if(canbuy){
+                slotInputDialog = JOptionPane.showInputDialog(null, "1 Slot kost $250. Je kan maximaal nog " +
+                        maxSlotsForPlayer +
+                        " slots kopen. Hoeveel slots wil je kopen?");
+            }
             if (slotInputDialog != null && !"".equals(slotInputDialog)) {
-
                 int slotInput = Integer.parseInt(slotInputDialog);
-
                 if (slotInput > maxSlotsForPlayer) {
                     JOptionPane.showMessageDialog(null, "Zoveel slots kun je niet kopen. ");
                     canbuy = false;
                 }
-
                 if (canbuy == true){
                     playerBalance = playerBalance - (slotInput*250);
                     String finalBalance = playerBalance + "";
