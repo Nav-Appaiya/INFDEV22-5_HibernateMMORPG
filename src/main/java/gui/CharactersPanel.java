@@ -1,6 +1,7 @@
 package gui;
 
 import entities.Character;
+import entities.Owns;
 import entities.Player;
 import org.hibernate.Session;
 import utils.HibernateUtil;
@@ -134,7 +135,7 @@ public class CharactersPanel extends JFrame implements ActionListener {
         }
 
         int avilibSlots = Integer.parseInt(this.player.getCharacterslots());
-        if (avilibSlots == 0) {
+        if (avilibSlots > 0) {
             newCharacterButton = new JButton("Create new character");
             newCharacterButton.setBounds(250, 40, 200, 60);
             frame.getContentPane().add(newCharacterButton);
@@ -210,8 +211,13 @@ public class CharactersPanel extends JFrame implements ActionListener {
                             character.setRace(race.getText());
                             character.setLevel(0);
                             character.setPlayer(player);
-
                             registreerSessie.save(character);
+
+                            Owns owns = new Owns();
+                            owns.setPlayer(player);
+                            owns.setCharacter(character);
+                            registreerSessie.save(owns);
+
                             registreerSessie.getTransaction().commit();
 
                             int avilibSlots = Integer.parseInt(player.getCharacterslots());

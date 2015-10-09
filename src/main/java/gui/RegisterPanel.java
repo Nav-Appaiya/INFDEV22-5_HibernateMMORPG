@@ -222,11 +222,11 @@ class RegisterPanel extends JPanel implements ActionListener {
                                         .setMaxResults(1)
                                         .uniqueResult() != null;
 
-                    if(exists == true){
+                    if (exists == true) {
                         showMessageDialog(null, "Gebruikersnaam al in gebruik, kies een andere.");
                         registreerSessie.getTransaction().rollback();
                         frame.setVisible(true);
-                    }else {
+                    } else {
                         Player user = new Player();
                         user.setBalance("0");
                         user.setBanned(false);

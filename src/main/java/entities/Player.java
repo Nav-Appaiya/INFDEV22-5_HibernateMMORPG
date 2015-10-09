@@ -29,6 +29,7 @@ public class Player {
     private Boolean banned;
     
     @OneToMany(mappedBy="player", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OrderBy("level DESC")
     private Set<Character> characters = new HashSet<Character>();
     
     @OneToMany(mappedBy="player", cascade = CascadeType.ALL) 

@@ -122,28 +122,41 @@ public class UserFrame extends JFrame implements ActionListener
             int playerBalance = Integer.parseInt(player.getBalance());
             int maxSlotsForPlayer = (int) playerBalance / 250;
 
-            int slotInput = Integer.parseInt( JOptionPane.showInputDialog(null, "1 Slot kost $250. Je kan maximaal nog " +
+            String slotInputDialog = JOptionPane.showInputDialog(null, "1 Slot kost $250. Je kan maximaal nog " +
                     maxSlotsForPlayer +
-                    " slots kopen. Hoeveel slots wil je kopen?"));
+                    " slots kopen. Hoeveel slots wil je kopen?");
 
-            if(slotInput >= maxSlotsForPlayer){
-                JOptionPane.showMessageDialog(null, "Zoveel slots kun je niet kopen. ");
-                canbuy = false;
-            }
-            if(canbuy == true){
-                playerBalance = playerBalance - (slotInput*250);
-                String finalBalance = playerBalance + "";
-                Session s = HibernateUtil.getSessionFactory().getCurrentSession();
-                s.beginTransaction();
-                player.setBalance(finalBalance);
-                int f = Integer.parseInt(player.getCharacterslots());
-                f = f+slotInput;
-                player.setCharacterslots(f+"");
-                s.saveOrUpdate(player);
-                s.getTransaction().commit();
-                p1.setVisible(false);
-                createAndShowGUI();
-                System.out.println("User new slot level = " + player.getCharacterslots());
+            if (slotInputDialog != null && !"".equals(slotInputDialog)) {
+
+                int slotInput = Integer.parseInt(slotInputDialog);
+
+                if (slotInput > maxSlotsForPlayer) {
+                    JOptionPane.showMessageDialog(null, "Zoveel slots kun je niet kopen. ");
+                    canbuy = false;
+                }
+
+                if (canbuy == true){
+                    playerBalance = playerBalance - (slotInput*250);
+                    String finalBalance = playerBalance + "";
+                    Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+                    s.beginTransaction();
+                    player.setBalance(finalBalance);
+                    int f = Integer.parseInt(player.getCharacterslots());
+                    f = f+slotInput;
+                    player.setCharacterslots(f+"");
+                    s.saveOrUpdate(player);
+                    s.getTransaction().commit();
+                    p1.setVisible(false);
+                    createAndShowGUI();
+
+                    String slotsSlot = "slots";
+                    if (slotInput == 1) {
+                        slotsSlot = "slot";
+                    }
+
+                    JOptionPane.showMessageDialog(null, "Cool! Je hebt "+slotInput+" "+slotsSlot+" gekocht. Je hebt nu in totaal "+player.getCharacterslots()+" slots");
+                    System.out.println("User new slot level = " + player.getCharacterslots());
+                }
             }
         }
     }
